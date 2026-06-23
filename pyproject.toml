@@ -1,0 +1,28 @@
+[project]
+name = "azureml-train-deploy"
+version = "0.1.0"
+description = "Train and deploy a scikit-learn model with Azure Machine Learning"
+
+requires-python = ">=3.10"
+dependencies = [
+  "azure-ai-ml>=1.24,<2",
+  "azure-identity>=1.19,<2",
+  "joblib>=1.4,<2",
+  "python-dotenv>=1.0,<2",
+  "scikit-learn>=1.5,<2",
+  "pandas",
+  "uvicorn"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.9,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/azuremlapp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
